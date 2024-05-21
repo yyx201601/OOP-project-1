@@ -1,0 +1,34 @@
+Test Case 1: Initialization
+
+Description: Check if the inventory initializes with the correct default prices for different items.
+Steps:
+Create an instance of the Inventory class.
+Access the prices of different items (e.g., Wheat, Corn) using the getPrice method.
+Expected Outcome: The prices of items match the predefined default prices.
+
+
+Test Case 2: Display Prices
+
+Description: Verify if the inventory displays the correct price list.
+Steps:
+Create an instance of the Inventory class.
+Call the displayPrices method.
+Expected Outcome: The console output shows the expected price list with prices for each item.
+
+
+Test Case 3: Get Price for Existing Item
+
+Description: Ensure that the getPrice method returns the correct price for an existing item.
+Steps:
+Create an instance of the Inventory class.
+Call the getPrice method for a known item (e.g., Wheat).
+Expected Outcome: The method returns the correct price for the specified item.
+
+
+Test Case 4: Get Price for Non-Existing Item
+
+Description: Check if the getPrice method returns -1 for a non-existing item.
+Steps:
+Create an instance of the Inventory class.
+Call the getPrice method for an item that does not exist in the inventory (e.g., "NonExisting").
+Expected Outcome: The method returns -1 to indicate that the item does not exist in the inventory.
