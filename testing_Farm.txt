@@ -1,0 +1,178 @@
+# Test Case 1: Test Farm Construction
+Description: Create a Farm object and verify its initial state.
+Expected Output:
+Farm size: 10
+Available funds: 1000
+Crops:
+Animals:
+
+Test Code:
+Player player("TestPlayer", 1);
+Farm farm(player, 10, 1000);
+farm.print_farm_status();
+
+------------------------------------------------------------
+
+# Test Case 2: Test Planting a Crop
+Description: Plant a Wheat crop and verify the farm status.
+Expected Output:
+Wheat has been planted.
+Farm size: 10
+Available funds: 950
+Crops:
+Crop: Wheat
+Grow stage: 0
+Maturity time: 3
+Purchase price: 50
+Animals:
+
+Test Code:
+Player player("TestPlayer", 1);
+Farm farm(player, 10, 1000);
+farm.plant_crop("Wheat");
+farm.print_farm_status();
+
+------------------------------------------------------------
+
+# Test Case 3: Test Harvesting a Crop Before Maturity
+Description: Attempt to harvest a Wheat crop before it reaches maturity.
+Expected Output:
+It's not ready to be harvest!
+Farm size: 10
+Available funds: 950
+Crops:
+Crop: Wheat
+Grow stage: 0
+Maturity time: 3
+Purchase price: 50
+Animals:
+
+Test Code:
+Player player("TestPlayer", 1);
+Farm farm(player, 10, 1000);
+farm.plant_crop("Wheat");
+farm.harvest_crop("Wheat");
+farm.print_farm_status();
+
+------------------------------------------------------------
+
+# Test Case 4: Test Harvesting a Crop After Maturity
+Description: Grow and then harvest a Wheat crop after it reaches maturity.
+Expected Output:
+Wheat is growing. Current grow stage: 3
+Harvested and sold Wheat crop.
+Farm size: 10
+Available funds: 1050
+Crops:
+Animals:
+
+Test Code:
+Player player("TestPlayer", 1);
+Farm farm(player, 10, 1000);
+farm.plant_crop("Wheat");
+for (int i = 0; i < 3; ++i) {
+    farm.getCrops()[0]->grow();
+}
+farm.harvest_crop("Wheat");
+farm.print_farm_status();
+
+------------------------------------------------------------
+
+# Test Case 5: Test Buying an Animal
+Description: Buy a Cow and verify the farm status.
+Expected Output:
+Bought a Cow.
+Farm size: 10
+Available funds: 500
+Crops:
+Animals:
+Animal type: Cow
+Age: 0
+Health status: Healthy
+Maturity age: 3
+Purchase price: 500
+
+Test Code:
+Player player("TestPlayer", 1);
+Farm farm(player, 10, 1000);
+farm.buy_animal("Cow");
+farm.print_farm_status();
+
+------------------------------------------------------------
+
+# Test Case 6: Test Selling an Animal Before Maturity
+Description: Attempt to sell a Cow before it reaches maturity.
+Expected Output:
+It's not ready to be harvest!
+Farm size: 10
+Available funds: 500
+Crops:
+Animals:
+Animal type: Cow
+Age: 0
+Health status: Healthy
+Maturity age: 3
+Purchase price: 500
+
+Test Code:
+Player player("TestPlayer", 1);
+Farm farm(player, 10, 1000);
+farm.buy_animal("Cow");
+farm.sell_animal("Cow");
+farm.print_farm_status();
+
+------------------------------------------------------------
+
+# Test Case 7: Test Selling an Animal After Maturity
+Description: Age up and then sell a Cow after it reaches maturity.
+Expected Output:
+Feeding Cow
+Feeding Cow
+Feeding Cow
+Sold a Cow.
+Farm size: 10
+Available funds: 1500
+Crops:
+Animals:
+
+Test Code:
+Player player("TestPlayer", 1);
+Farm farm(player, 10, 1000);
+farm.buy_animal("Cow");
+for (int i = 0; i < 3; ++i) {
+    farm.getAnimals()[0]->feed();
+}
+farm.sell_animal("Cow");
+farm.print_farm_status();
+
+------------------------------------------------------------
+
+# Test Case 8: Test Multiple Operations
+Description: Perform multiple operations on the farm and verify the status.
+Expected Output:
+Wheat has been planted.
+Feeding Cow
+Feeding Cow
+Feeding Cow
+Wheat is growing. Current grow stage: 3
+Harvested and sold Wheat crop.
+Sold a Cow.
+Farm size: 10
+Available funds: 1400
+Crops:
+Animals:
+
+Test Code:
+Player player("TestPlayer", 1);
+Farm farm(player, 10, 1000);
+farm.plant_crop("Wheat");
+farm.buy_animal("Cow");
+for (int i = 0; i < 3; ++i) {
+    farm.getAnimals()[0]->feed();
+}
+for (int i = 0; i < 3; ++i) {
+    farm.getCrops()[0]->grow();
+}
+farm.harvest_crop("Wheat");
+farm.sell_animal("Cow");
+farm.print_farm_status();

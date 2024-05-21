@@ -31,9 +31,9 @@ void Farm::cleanup() {
 
 // Function to check and update player achievements
 void Farm::checkAchievements() {
-    if (available_funds >= 2000 && find(player.getAchievements().begin(), player.getAchievements().end(), string("Good job!")) == player.getAchievements().end()) {
+    if (available_funds >= 1000 && find(player.getAchievements().begin(), player.getAchievements().end(), string("Good job!")) == player.getAchievements().end()) {
         player.addAchievement("Good job!");
-    } else if (available_funds >= 1000 && find(player.getAchievements().begin(), player.getAchievements().end(), string("Double!!")) == player.getAchievements().end()) {
+    } else if (available_funds >= 2000 && find(player.getAchievements().begin(), player.getAchievements().end(), string("Double!!")) == player.getAchievements().end()) {
         player.addAchievement("Double!!");
     }
 }
@@ -65,14 +65,18 @@ void Farm::harvest_crop(const string& crop) {
     auto it = crops.begin();
     while (it != crops.end()) {
         if ((*it)->getName() == crop) {
-            // Sell price is 2 times the purchase price
-            available_funds += 2 * (*it)->getPrice();
-            delete *it;
-            it = crops.erase(it);
-            cout << "Harvested and sold " << crop << " crop." << endl;
-            player.setLevel(player.getLevel() + 1); // Increase player level
-            checkAchievements();
-            return;
+            if ((*it)->getGrowStage() >= (*it)->getMaturityTime()) {
+                // Sell price is 2 times the purchase price
+                available_funds += 2 * (*it)->getPrice();
+                delete *it;
+                it = crops.erase(it);
+                player.setLevel(player.getLevel() + 1); // Increase player level
+                checkAchievements();
+                return;
+            } else {
+                cout << "It's not ready to be harvest!" << endl;
+                return;
+            }
         } else {
             ++it;
         }
@@ -107,12 +111,11 @@ void Farm::sell_animal(const string& animal_type) {
                 available_funds += 2 * (*it)->get_price();
                 delete *it;
                 it = animals.erase(it);
-                cout << "Sold a " << animal_type << "." << endl;
                 player.setLevel(player.getLevel() + 1); // Increase player level
                 checkAchievements();
                 return;
             } else {
-                cout << animal_type << " is not mature yet and cannot be sold." << endl;
+                cout << "It's not ready to be sold!" << endl;
                 return;
             }
         } else {
@@ -150,3 +153,4 @@ vector<Animal*>& Farm::getAnimals() {
 float Farm::getAvailableFunds() const {
     return available_funds;
 }
+

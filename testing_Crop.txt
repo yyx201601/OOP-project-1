@@ -1,0 +1,181 @@
+# Test Case 1: Test Crop Abstract Base Class
+Description: Attempt to create an instance of Crop and verify that it cannot be instantiated.
+Expected Output:
+Error: cannot declare variable 'crop' to be of abstract type 'Crop'
+
+Test Code:
+Crop crop; // This should fail as Crop is an abstract class
+
+------------------------------------------------------------
+
+# Test Case 2: Test Crop Derived Class Construction (Wheat)
+Description: Create a Wheat object and verify its initial state, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Crop: Wheat
+Grow stage: 0
+Maturity time: 3
+Purchase price: 50.0
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+wheat.print_info();
+
+------------------------------------------------------------
+
+# Test Case 3: Test Crop Derived Class Grow Method (Wheat)
+Description: Grow the Wheat object and verify the grow stage, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Wheat is growing. Current grow stage: 1
+Crop: Wheat
+Grow stage: 1
+Maturity time: 3
+Purchase price: 50.0
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+wheat.grow();
+wheat.print_info();
+
+------------------------------------------------------------
+
+# Test Case 4: Test Crop Derived Class Harvest Method Before Maturity (Wheat)
+Description: Attempt to harvest the Wheat object before it reaches maturity, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Wheat is not ready to be harvested yet.
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+wheat.harvest();
+
+------------------------------------------------------------
+
+# Test Case 5: Test Crop Derived Class Harvest Method After Maturity (Wheat)
+Description: Grow the Wheat object to maturity and then harvest it, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Wheat is growing. Current grow stage: 3
+Wheat has been harvested!
+Crop: Wheat
+Grow stage: 0
+Maturity time: 3
+Purchase price: 50.0
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+for (int i = 0; i < 3; ++i) {
+    wheat.grow();
+}
+wheat.harvest();
+wheat.print_info();
+
+------------------------------------------------------------
+
+# Test Case 6: Test Crop Derived Class Multiple Growth and Harvest Cycles (Wheat)
+Description: Grow and harvest the Wheat object multiple times, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Wheat is growing. Current grow stage: 3
+Wheat has been harvested!
+Wheat is growing. Current grow stage: 3
+Wheat has been harvested!
+Crop: Wheat
+Grow stage: 0
+Maturity time: 3
+Purchase price: 50.0
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+for (int i = 0; i < 3; ++i) {
+    wheat.grow();
+}
+wheat.harvest();
+for (int i = 0; i < 3; ++i) {
+    wheat.grow();
+}
+wheat.harvest();
+wheat.print_info();
+
+------------------------------------------------------------
+
+# Test Case 7: Test Crop Derived Class Construction (Corn)
+Description: Create a Corn object and verify its initial state, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Crop: Corn
+Grow stage: 0
+Maturity time: 5
+Purchase price: 75.0
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+corn.print_info();
+
+------------------------------------------------------------
+
+# Test Case 8: Test Crop Derived Class Grow Method (Corn)
+Description: Grow the Corn object and verify the grow stage, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Corn is growing. Current grow stage: 1
+Crop: Corn
+Grow stage: 1
+Maturity time: 5
+Purchase price: 75.0
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+corn.grow();
+corn.print_info();
+
+------------------------------------------------------------
+
+# Test Case 9: Test Crop Derived Class Harvest Method Before Maturity (Corn)
+Description: Attempt to harvest the Corn object before it reaches maturity, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Corn is not ready to be harvested yet.
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+corn.harvest();
+
+------------------------------------------------------------
+
+# Test Case 10: Test Crop Derived Class Harvest Method After Maturity (Corn)
+Description: Grow the Corn object to maturity and then harvest it, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Corn is growing. Current grow stage: 5
+Corn has been harvested!
+Crop: Corn
+Grow stage: 0
+Maturity time: 5
+Purchase price: 75.0
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+for (int i = 0; i < 5; ++i) {
+    corn.grow();
+}
+corn.harvest();
+corn.print_info();
+
+------------------------------------------------------------
+
+# Test Case 11: Test Crop Derived Class Multiple Growth and Harvest Cycles (Corn)
+Description: Grow and harvest the Corn object multiple times, ensuring it correctly implements the abstract class Crop.
+Expected Output:
+Corn is growing. Current grow stage: 5
+Corn has been harvested!
+Corn is growing. Current grow stage: 5
+Corn has been harvested!
+Crop: Corn
+Grow stage: 0
+Maturity time: 5
+Purchase price: 75.0
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+for (int i = 0; i < 5; ++i) {
+    corn.grow();
+}
+corn.harvest();
+for (int i = 0; i < 5; ++i) {
+    corn.grow();
+}
+corn.harvest();
+corn.print_info();

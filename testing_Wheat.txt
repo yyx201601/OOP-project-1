@@ -1,0 +1,84 @@
+# Test Case 1: Test Wheat Construction
+Description: Create a Wheat object and verify its initial state.
+Expected Output:
+Crop: Wheat
+Grow stage: 0
+Maturity time: 3
+Purchase price: 50.0
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+wheat.print_info();
+
+------------------------------------------------------------
+
+# Test Case 2: Test Wheat Grow Method
+Description: Grow the Wheat object and verify the grow stage.
+Expected Output:
+Wheat is growing. Current grow stage: 1
+Crop: Wheat
+Grow stage: 1
+Maturity time: 3
+Purchase price: 50.0
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+wheat.grow();
+wheat.print_info();
+
+------------------------------------------------------------
+
+# Test Case 3: Test Wheat Harvest Method Before Maturity
+Description: Attempt to harvest the Wheat object before it reaches maturity.
+Expected Output:
+Wheat is not ready to be harvested yet.
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+wheat.harvest();
+
+------------------------------------------------------------
+
+# Test Case 4: Test Wheat Harvest Method After Maturity
+Description: Grow the Wheat object to maturity and then harvest it.
+Expected Output:
+Wheat is growing. Current grow stage: 3
+Wheat has been harvested!
+Crop: Wheat
+Grow stage: 0
+Maturity time: 3
+Purchase price: 50.0
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+for (int i = 0; i < 3; ++i) {
+    wheat.grow();
+}
+wheat.harvest();
+wheat.print_info();
+
+------------------------------------------------------------
+
+# Test Case 5: Test Wheat Multiple Growth and Harvest Cycles
+Description: Grow and harvest the Wheat object multiple times.
+Expected Output:
+Wheat is growing. Current grow stage: 3
+Wheat has been harvested!
+Wheat is growing. Current grow stage: 3
+Wheat has been harvested!
+Crop: Wheat
+Grow stage: 0
+Maturity time: 3
+Purchase price: 50.0
+
+Test Code:
+Wheat wheat("Wheat", 3, 50.0);
+for (int i = 0; i < 3; ++i) {
+    wheat.grow();
+}
+wheat.harvest();
+for (int i = 0; i < 3; ++i) {
+    wheat.grow();
+}
+wheat.harvest();
+wheat.print_info();

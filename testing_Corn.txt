@@ -1,0 +1,84 @@
+# Test Case 1: Test Corn Construction
+Description: Create a Corn object and verify its initial state.
+Expected Output:
+Crop: Corn
+Grow stage: 0
+Maturity time: 5
+Purchase price: 75.0
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+corn.print_info();
+
+------------------------------------------------------------
+
+# Test Case 2: Test Corn Grow Method
+Description: Grow the Corn object and verify the grow stage.
+Expected Output:
+Corn is growing. Current grow stage: 1
+Crop: Corn
+Grow stage: 1
+Maturity time: 5
+Purchase price: 75.0
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+corn.grow();
+corn.print_info();
+
+------------------------------------------------------------
+
+# Test Case 3: Test Corn Harvest Method Before Maturity
+Description: Attempt to harvest the Corn object before it reaches maturity.
+Expected Output:
+Corn is not ready to be harvested yet.
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+corn.harvest();
+
+------------------------------------------------------------
+
+# Test Case 4: Test Corn Harvest Method After Maturity
+Description: Grow the Corn object to maturity and then harvest it.
+Expected Output:
+Corn is growing. Current grow stage: 5
+Corn has been harvested!
+Crop: Corn
+Grow stage: 0
+Maturity time: 5
+Purchase price: 75.0
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+for (int i = 0; i < 5; ++i) {
+    corn.grow();
+}
+corn.harvest();
+corn.print_info();
+
+------------------------------------------------------------
+
+# Test Case 5: Test Corn Multiple Growth and Harvest Cycles
+Description: Grow and harvest the Corn object multiple times.
+Expected Output:
+Corn is growing. Current grow stage: 5
+Corn has been harvested!
+Corn is growing. Current grow stage: 5
+Corn has been harvested!
+Crop: Corn
+Grow stage: 0
+Maturity time: 5
+Purchase price: 75.0
+
+Test Code:
+Corn corn("Corn", 5, 75.0);
+for (int i = 0; i < 5; ++i) {
+    corn.grow();
+}
+corn.harvest();
+for (int i = 0; i < 5; ++i) {
+    corn.grow();
+}
+corn.harvest();
+corn.print_info();

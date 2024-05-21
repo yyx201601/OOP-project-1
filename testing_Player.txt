@@ -1,0 +1,67 @@
+# Test Case 1: Test Player Construction
+Description: Create a Player object and verify its initial state.
+Expected Output:
+Player: Alice
+Level: 1
+Achievements: 
+
+Test Code:
+Player player("Alice", 1);
+player.displayInfo();
+
+------------------------------------------------------------
+
+# Test Case 2: Test Player Level Getter and Setter
+Description: Set a new level for the Player and verify it.
+Expected Output:
+Level: 5
+
+Test Code:
+Player player("Alice", 1);
+player.setLevel(5);
+cout << "Level: " << player.getLevel() << endl;
+
+------------------------------------------------------------
+
+# Test Case 3: Test Adding Achievements
+Description: Add an achievement to the Player and verify it.
+Expected Output:
+Achievements: "First Win" 
+
+Test Code:
+Player player("Alice", 1);
+player.addAchievement("First Win");
+for (const string& achievement : player.getAchievements()) {
+    cout << "Achievement: " << achievement << endl;
+}
+
+------------------------------------------------------------
+
+# Test Case 4: Test Display Information with Achievements
+Description: Create a Player, add achievements, and display the information.
+Expected Output:
+Player: Alice
+Level: 1
+Achievements: First Win, Double!!
+
+Test Code:
+Player player("Alice", 1);
+player.addAchievement("First Win");
+player.addAchievement("Double!!");
+player.displayInfo();
+
+------------------------------------------------------------
+
+# Test Case 5: Test Multiple Achievements
+Description: Add multiple achievements and verify all are correctly added.
+Expected Output:
+Achievements: "First Win", "Double!!", "Good job!"
+
+Test Code:
+Player player("Alice", 1);
+player.addAchievement("First Win");
+player.addAchievement("Double!!");
+player.addAchievement("Good job!");
+for (const string& achievement : player.getAchievements()) {
+    cout << "Achievement: " << achievement << endl;
+}

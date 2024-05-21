@@ -1,0 +1,122 @@
+# Test Case 1: Test Animal Construction
+Description: Create an Animal object and verify its initial state.
+Expected Output:
+Animal type: Cow
+Age: 0
+Health status: Healthy
+Maturity age: 3
+Purchase price: 1500.0
+
+Test Code:
+Animal cow("Cow", 0, "Healthy", 3, 1500.0);
+cow.print_info();
+
+------------------------------------------------------------
+
+# Test Case 2: Test Animal Feed Method
+Description: Feed the Animal object and verify its health status.
+Expected Output:
+Feeding Cow
+Animal type: Cow
+Age: 1
+Health status: Healthy
+Maturity age: 3
+Purchase price: 1500.0
+
+Test Code:
+Animal cow("Cow", 0, "Healthy", 3, 1500.0);
+cow.feed();
+cow.print_info();
+
+------------------------------------------------------------
+
+# Test Case 3: Test Animal Age Up Method
+Description: Age up the Animal object and verify its age.
+Expected Output:
+Animal type: Cow
+Age: 2
+Health status: Healthy
+Maturity age: 3
+Purchase price: 1500.0
+
+Test Code:
+Animal cow("Cow", 1, "Healthy", 3, 1500.0);
+cow.age_up();
+cow.print_info();
+
+------------------------------------------------------------
+
+# Test Case 4: Test Animal Maturity Check
+Description: Age up the Animal object to maturity and verify if it is mature.
+Expected Output:
+Animal type: Cow
+Age: 3
+Health status: Healthy
+Maturity age: 3
+Purchase price: 1500.0
+Cow has matured.
+
+Test Code:
+Animal cow("Cow", 2, "Healthy", 3, 1500.0);
+cow.age_up();
+cow.print_info();
+
+------------------------------------------------------------
+
+# Test Case 5: Test Animal Feeding and Aging Up Multiple Times
+Description: Feed and age up the Animal object multiple times, ensuring health status and age update correctly.
+Expected Output:
+Feeding Cow
+Feeding Cow
+Feeding Cow
+Animal type: Cow
+Age: 3
+Health status: Healthy
+Maturity age: 3
+Purchase price: 1500.0
+Cow has matured.
+
+Test Code:
+Animal cow("Cow", 0, "Healthy", 3, 1500.0);
+for (int i = 0; i < 3; ++i) {
+    cow.feed();
+}
+cow.print_info();
+
+------------------------------------------------------------
+
+# Test Case 6: Test Animal Not Ready to Sell Before Maturity
+Description: Ensure the animal cannot be sold before it reaches maturity.
+Expected Output:
+Animal type: Cow
+Age: 1
+Health status: Healthy
+Maturity age: 3
+Purchase price: 1500.0
+It's not ready to be sold!
+
+Test Code:
+Animal cow("Cow", 1, "Healthy", 3, 1500.0);
+if (!cow.is_mature()) {
+    cout << "It's not ready to be sold!" << endl;
+}
+cow.print_info();
+
+------------------------------------------------------------
+
+# Test Case 7: Test Animal Ready to Sell After Maturity
+Description: Ensure the animal can be sold after it reaches maturity.
+Expected Output:
+Animal type: Cow
+Age: 3
+Health status: Healthy
+Maturity age: 3
+Purchase price: 1500.0
+Cow is ready to be sold.
+
+Test Code:
+Animal cow("Cow", 3, "Healthy", 3, 1500.0);
+if (cow.is_mature()) {
+    cout << "Cow is ready to be sold." << endl;
+}
+cow.print_info();
