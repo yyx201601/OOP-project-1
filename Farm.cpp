@@ -2,10 +2,12 @@
 #include "Wheat.h"
 #include "Corn.h"
 #include <algorithm> // Include algorithm header for std::find
+#include <iostream>
+#include <string>
 using namespace std;
 
 // Constructor with parameters
-Farm::Farm(Player& player, int size, float funds) : player(player), farm_size(size), available_funds(funds) {
+Farm::Farm(Player& player, int size, float funds) : farm_size(size), available_funds(funds), player(player) {
     crop_prices["Wheat"] = 50.0;
     crop_prices["Corn"] = 75.0;
     // Add more crops and their prices as needed
@@ -31,9 +33,9 @@ void Farm::cleanup() {
 
 // Function to check and update player achievements
 void Farm::checkAchievements() {
-    if (available_funds >= 1000 && find(player.getAchievements().begin(), player.getAchievements().end(), string("Good job!")) == player.getAchievements().end()) {
+    if (available_funds >= 2000 && find(player.getAchievements().begin(), player.getAchievements().end(), string("Good job!")) == player.getAchievements().end()) {
         player.addAchievement("Good job!");
-    } else if (available_funds >= 2000 && find(player.getAchievements().begin(), player.getAchievements().end(), string("Double!!")) == player.getAchievements().end()) {
+    } else if (available_funds >= 1000 && find(player.getAchievements().begin(), player.getAchievements().end(), string("Double!!")) == player.getAchievements().end()) {
         player.addAchievement("Double!!");
     }
 }
@@ -50,7 +52,7 @@ void Farm::plant_crop(const string& crop) {
             } else if (crop == "Corn") {
                 crops.push_back(new Corn("Corn", 5, it->second)); // Assuming 5 is the maturity time
             }
-            cout << crop << " has been planted." << endl;
+            cout << "Crop planted." << endl;
         } else {
             cout << "Insufficient funds." << endl;
         }
@@ -59,7 +61,7 @@ void Farm::plant_crop(const string& crop) {
     }
     checkAchievements();
 }
- 
+
 // Function to harvest a crop
 void Farm::harvest_crop(const string& crop) {
     auto it = crops.begin();
@@ -91,7 +93,6 @@ void Farm::buy_animal(const string& animal_type) {
         if (available_funds >= it->second) {
             available_funds -= it->second;
             animals.push_back(new Animal(animal_type, 0, "Healthy", 3, it->second));
-            cout << "Bought a " << animal_type << "." << endl;
         } else {
             cout << "Insufficient funds to buy " << animal_type << "." << endl;
         }
@@ -115,7 +116,7 @@ void Farm::sell_animal(const string& animal_type) {
                 checkAchievements();
                 return;
             } else {
-                cout << "It's not ready to be sold!" << endl;
+                cout << "It's not ready to be harvest!" << endl;
                 return;
             }
         } else {
@@ -153,4 +154,3 @@ vector<Animal*>& Farm::getAnimals() {
 float Farm::getAvailableFunds() const {
     return available_funds;
 }
-

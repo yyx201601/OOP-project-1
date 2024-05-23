@@ -1,4 +1,5 @@
 #include "Crop.h"
+#include <iostream>
 
 // Default constructor
 Crop::Crop() : name(" "), grow_stage(0), maturity_time(0), purchase_price(0.0) {}
@@ -20,13 +21,6 @@ void Crop::harvest() {
     } else {
         cout << name << " is not ready to be harvested yet." << endl;
     }
-}
-
-void Crop::print_info() {
-    cout << "Crop: " << name << endl;
-    cout << "Grow stage: " << grow_stage << endl;
-    cout << "Maturity time: " << maturity_time << endl;
-    cout << "Purchase price: " << purchase_price << endl;
 }
 
 string Crop::getName() const {

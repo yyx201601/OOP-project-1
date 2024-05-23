@@ -1,4 +1,5 @@
 #include "Animal.h"
+#include <iostream>
 
 // Initialize static member
 map<string, float> Animal::animal_prices = {
@@ -16,7 +17,7 @@ void Animal::print_info() const {
     cout << "Age: " << age << endl;
     cout << "Health status: " << health_status << endl;
     cout << "Maturity age: " << maturity_age << endl;
-    cout << "Purchase price: " << purchase_price << endl;
+    cout << "Sold price: " << purchase_price * 2 << endl;
 }
 
 void Animal::feed() {

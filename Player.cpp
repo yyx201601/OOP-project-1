@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -26,7 +27,9 @@ vector<string> Player::getAchievements() const {
 }
 
 void Player::displayInfo() const {
-    cout << "Player: " << name << "\nLevel: " << level << "\nAchievements: ";
+    cout << "Player: " << name << endl;
+    cout << "Level: " << level << endl;
+    cout << "Achievements: " << endl;
     for (const string& achievement : achievements) {
         cout << achievement << " ";
     }

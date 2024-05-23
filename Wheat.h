@@ -6,8 +6,11 @@
 class Wheat : public Crop {
 public:
     Wheat(); // default constructor
-    Wheat(string crop_name, int grow_time, float purchase_price); // constructor with parameters
-    void print_info() override; // function to print information about the crop
+    Wheat(string crop_name, int grow_time, float purchase_price);
+
+    void grow() override; // function to grow the crop
+    void harvest() override; // function to harvest the crop
+    void print_info() const override; // function to print information about the crop
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <map>
 #include "Farm.h"
 #include "Crop.h"
 #include "Animal.h"
@@ -30,6 +31,7 @@ void updateFarmStatus(Farm& farm) {
     for (Crop* crop : farm.getCrops()) {
         crop->grow();
     }
+    // Simulate other daily updates here if necessary
 }
 
 void printFarmStatus(Farm& farm, const Player& player, int day) {
@@ -100,7 +102,7 @@ int main() {
                     cin >> cropType;
                     cout << "Enter quantity: ";
                     cin >> crop_quantity;
-                    while (crop_quantity > 10 - myFarm.getCrops().size()) {
+                    while (crop_quantity > 10 - static_cast<int>(myFarm.getCrops().size())) {
                         cout << "Not enough land to plant. Please enter a smaller quantity: ";
                         cin >> crop_quantity;
                     }
@@ -116,6 +118,7 @@ int main() {
                     for (int i = 0; i < animal_quantity; i++) {
                         myFarm.buy_animal(animalType);
                     }
+                    cout << "Bought a " << animalType << "." << endl;
                     break;
                 case 5:
                     for (Animal* animal : myFarm.getAnimals()) {

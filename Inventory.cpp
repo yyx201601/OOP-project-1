@@ -1,4 +1,5 @@
 #include "Inventory.h"
+#include <iostream>
 
 // Initialize the price list in the constructor
 Inventory::Inventory() {

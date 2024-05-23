@@ -15,10 +15,11 @@ protected:
 public:
     Crop(); // default constructor
     Crop(string crop_name, int grow_time, float purchase_price); // constructor with parameters
+    virtual ~Crop() {} // virtual destructor
 
-    void grow(); // function to grow the crop
-    void harvest(); // function to harvest the crop
-    virtual void print_info(); // function to print information about the crop
+    virtual void grow() = 0; // pure virtual function to grow the crop
+    virtual void harvest() = 0; // pure virtual function to harvest the crop
+    virtual void print_info() const = 0; // pure virtual function to print information about the crop
 
     string getName() const;
     int getGrowStage() const;
@@ -27,4 +28,3 @@ public:
 };
 
 #endif
-
